@@ -27,6 +27,8 @@ class PonyOrmGenerator(BaseGenerator):
             for param in field.params:
                 enumed = PonyParamEnum.get(param)
                 if enumed:
+                    if enumed == PonyParamEnum.required.value:
+                        continue
                     model_field += f", {enumed}={field.params[param]}"
                 else:
                     logging.warning(f'{param} not found in {PonyParamEnum.keys()}')

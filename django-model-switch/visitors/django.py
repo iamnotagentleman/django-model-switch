@@ -47,7 +47,7 @@ class ModelVisitor(ast.NodeVisitor):
     A visitor that detects django models.
     """
     def __init__(self):
-        self.models = {}
+        self.models = AttrDict()
 
     def visit_ClassDef(self, node):
         base_class = None
@@ -60,4 +60,5 @@ class ModelVisitor(ast.NodeVisitor):
         if base_class in ModelEnum.MODEL_BASE_CLASSES.value:
             visitor = FieldVisitor()
             visitor.visit(node)
-            self.models[f'{node.name}({base_class})'] = visitor.fields
+            self.models['classname'] = f'{node.name}({base_class})'
+            self.models['fields'] = visitor.fields

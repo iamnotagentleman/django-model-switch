@@ -61,3 +61,7 @@ class TargetEnum(CoreEnum):
     PYDANTIC = "pydantic"
     PONY = "pony"
     TORTOISE = "tortoise"
+
+
+class OutEnum(CoreEnum):
+    default = "stdout"

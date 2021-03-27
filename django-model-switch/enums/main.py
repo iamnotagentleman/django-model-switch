@@ -1,4 +1,17 @@
 from enum import Enum
+__all__  = ['PonyParamEnum',
+            'PonyTypeEnumIn',
+            'PonyTypeEnumSub',
+            'FieldTypeEnum',
+            'TargetEnum',
+            'OutEnum',
+            'ModelEnum']
+
+PONY_EXCLUDED_ARGS = ('verbose_name',
+                      'editable',
+                      'verbose_name',
+                      'spatial_index',
+                      )
 
 
 class CoreEnum(Enum):
@@ -18,6 +31,7 @@ class CoreEnum(Enum):
 class PonyTypeEnumIn(CoreEnum):
     string = "str"
     unsigned_int = "int"
+    date = "datetime"
     boolean = "bool"
 
 
@@ -42,7 +56,7 @@ class FieldTypeEnum(CoreEnum):
     IntegerField = "int"
     EmailField = "string"
     BooleanField = "boolean"
-    DateTimeField = "datetime"
+    DateTimeField = "date"
     DateField = "date",
     TimeField = "time",
     FileField = "string",
@@ -53,7 +67,7 @@ class FieldTypeEnum(CoreEnum):
 
 
 class ModelEnum(CoreEnum):
-    MODEL_BASE_CLASSES = ["CoreModel", "Model"]
+    MODEL_BASE_CLASSES = ["CoreModel", "Model", 'models.Model']
     DEFAULT_FIELD_TYPE = "string"
 
 

@@ -25,8 +25,8 @@ class CoreEnum(Enum):
             return None
 
     @classmethod
-    def keys(self):
-        return [i for i in self.__dict__.keys() if i[:1] != '_']
+    def keys(cls):
+        return [i for i in cls.__dict__.keys() if i[:1] != '_']
 
 class PonyTypeEnumIn(CoreEnum):
     string = "str"
